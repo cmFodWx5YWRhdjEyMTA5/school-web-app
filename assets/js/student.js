@@ -63,15 +63,17 @@ function getStudentPhoto(input) {
 
 function getStudents(callback) {   
   let xobj = new XMLHttpRequest();
-      xobj.overrideMimeType("application/json");
-  xobj.open('GET', "assets/data/students.json", true); 
-  xobj.onreadystatechange = function () {
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', "http://localhost:8080/students", true);
+        xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
           callback(xobj.responseText);
         }
-  };
-  xobj.send(null);  
+    };
+    xobj.send(null);
 }
+
+
 
 function getClasses(callback){
     let xobj = new XMLHttpRequest();
@@ -168,7 +170,8 @@ function saveStudent() {
   let inFirstName   = document.getElementById("fFirstName");
   let inLastName    = document.getElementById("fLastName");
   let inRollNumber  = document.getElementById("fRollNumber");
- 
+
+
   if(selectedClassName == ""){
     alert("Please select Class!");
     return false;

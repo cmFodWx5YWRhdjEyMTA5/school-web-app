@@ -1,0 +1,97 @@
+diff --git a/assets/js/class.js b/assets/js/class.js
+index d465253..ee256d9 100644
+--- a/assets/js/class.js
++++ b/assets/js/class.js
+@@ -42,11 +42,11 @@ function initClass(){
+ function getClassList(callback) {   
+   let xobj = new XMLHttpRequest();
+       xobj.overrideMimeType("application/json");
+-  xobj.open('GET', "assets/data/classes.json", true); 
+-  xobj.onreadystatechange = function () {
+-        if (xobj.readyState == 4 && xobj.status == "200") {
+-          callback(xobj.responseText);
+-        }
++      xobj.open('GET', "http://localhost:8080/classrooms", true);
++      xobj.onreadystatechange = function () {
++      if (xobj.readyState == 4 && xobj.status == "200") {
++        callback(xobj.responseText);
++      }
+   };
+   xobj.send(null);  
+ }
+@@ -72,7 +72,7 @@ function showClassList(listClass){
+     
+     x+= "<tr id= "+clId+" >"+
+       "<td>"+mClass.name+"</td>"+
+-      "<td>"+mClass.teacher_name+"</td>"+
++      "<td>"+mClass.teacherName+"</td>"+
+       "<td>"+mClass.no_of_students+"</td>"+
+       "<td class='text-center'>"+
+         "<button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editClassDetails("+i+")'>Edit</button>"+
+@@ -87,14 +87,13 @@ function saveClass() {
+  
+   let inClassName   = document.getElementById("fClassName");
+   let inTeacher     = document.getElementById("fTeacherName");
+- 
+ 
+       if(editClass){
+-
++        console.log("edit her here here");
+         var mClass = {
+           "id":classId,
+           "name":inClassName.value,
+-          "teacher_name":inTeacher.value,
++          "teacherName":inTeacher.value,
+           "account_id": 123,
+           "created_at":"2019/07/24 10:00:00",
+           "updated_at":"2019/07/24 10:00:00",
+@@ -102,19 +101,27 @@ function saveClass() {
+           "status":1
+         }
+ 
+-        listClass[selectionClass] = mClass;
+-        
+-        var x = "<tr id= cl_tr_"+selectionClass+" >"+
+-          "<td>"+mClass.name+"</td>"+
+-          "<td>"+mClass.teacher_name+"</td>"+
+-          "<td>"+mClass.no_of_students+"</td>"+
+-          "<td class='text-center'>"+
+-            "<button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editClassDetails("+selectionClass+")'>Edit</button>"+
+-          "</td>"+
+-          "</tr>";
+-          document.getElementById("cl_tr_"+selectionClass).innerHTML = x;
+-
+-          console.log(x);
++        $.ajax({
++           url: "http://localhost:8080/classrooms",
++           type: "PUT",
++           contentType: "application/json",
++           data: JSON.stringify(mClass),
++           success: function(response) {
++              listClass[selectionClass] = mClass;
++              var x = "<tr id= cl_tr_"+selectionClass+" >"+
++                  "<td>"+mClass.name+"</td>"+
++                  "<td>"+mClass.teacherName+"</td>"+
++                  "<td>"+mClass.no_of_students+"</td>"+
++                  "<td class='text-center'>"+
++                  "<button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editClassDetails("+selectionClass+")'>Edit</button>"+
++                  "</td>"+
++                  "</tr>";
++              document.getElementById("cl_tr_"+selectionClass).innerHTML = x;
++           },
++           error: function(response) {
++              console.log("===> edit classroom error dipslay error messaage " + JSON.stringify(response));
++           }
++        });
+ 
+       }else{
+         var mClass = {
+@@ -165,7 +172,7 @@ function editClassDetails(position){
+   let inTeacher     = document.getElementById("fTeacherName");
+ 
+   inClassName.value = mClass.name;
+-  inTeacher.value   = mClass.teacher_name;
++  inTeacher.value   = mClass.teacherName;
+ 
+   editClass = true;
+   selectionClass = position;
