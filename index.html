@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>TemperatureApp</title>
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/gradient-navbar.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar">
+        <div class="container-fluid"><img src="assets/img/logo.png" width="10%" style="width: 80px;">
+            <h2 style="color: rgb(255,255,255);">Mi Robotic</h2><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Contact Us</a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="login-clean">
+        <form id="formLogin" method="post" >
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><img src="assets/img/university.png"></div>
+            <div class="form-group"><input class="form-control-plaintext form-control" type="text" id="username" placeholder="Username" required="" minlegnth="3"></div>
+            <div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password" required="" minlength="3"></div>
+            <h5 id="txtError" style="color:red;" ></h5>
+            <div class="form-group"><button class="btn btn-primary btn-block" id="btn_login" type="submit" style="background-color: rgb(43,181,220);">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a></form>
+        <footer>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 footer-contacts">
+                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                        <p><span class="new-line-span">3791 Jalan Bukit Merah #07-13,</span><span class="new-line-span">&nbsp;E-Center @ Redhill,&nbsp;<br></span>Singapore 159471<br><br></p>
+                    </div>
+                    <div><i class="fa fa-phone footer-contacts-icon"></i>
+                        <p class="footer-center-info email text-left">+65 9827 8280<br></p>
+                    </div>
+                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                        <p> <a href="#" target="_blank"><br>info@mirobotic.sg<br><br></a></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 footer-about">
+                    <h4>About the company</h4>
+                    <p>Founded in June 2018,&nbsp;MI Robotic is a Singapore-headquartered developer of applied AI and robotics technology for a variety of different environments including home, school, healthcare, industrial, F&amp;B, and retail. The sole
+                        distributor in Singapore for MI Robots, a China-built brand of robot, MI Robotic, together with its sister teams in Malaysia and India, are providers of AI related customize software development and associated IT services for advanced
+                        robotics applications.<br></p>
+                </div>
+                <div class="col">
+                    <h4>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h4>
+                    <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/Profile-Edit-Form.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

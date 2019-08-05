@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<body id="page-top">
+  
+        <div class="container-fluid" id="optionView" ng-include="">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding-top: 30PX;">
+                    <h3 class="text-dark mb-0">Schools</h3><a class="btn btn-primary d-none d-sm-inline-block" id = "btnAddSchool" role="button" href="#">
+                        <i class="fas fa-plus-square fa-sm text-white-50"></i>&nbsp; Add School</a></div>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table dataTable my-0" id="schoolTable">
+                                <thead>
+                                    <tr>
+                                        <th class="tableHead">Logo</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Contact</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="schoolList">
+                                   
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    
+    <div id="mSchool" class="modal">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <span class="close">&times;</span> -->                    
+                    <h4 class="modal-title">Register School</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="formSchool" >
+                        <div class="form-row profile-row">
+                            <div class="col-md-4 relative">
+                                <div class="avatar">
+                                    <h5 class="mb-2">School Logo or Image</h5>
+                                    <img id="imgLogo" src="assets/img/school-circle.png" width="200" height="200"  class="mb-3">
+                                    <!-- <div class="avatar-bg center"></div> -->
+                                </div>
+                                <input type="file" id="fSchoolLogo" class="form-control" accept="image/*" name="avatar-file">
+                            </div>
+                            <div class="col-md-8">
+
+                                <div class="form-row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label>Name</label><input class="form-control" type="text" id="fName"  required=""  autocomplete="off"></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label>Username</label><input class="form-control" type="text" id="fUsename"  required=""  autocomplete="off"></div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label>Password </label><input class="form-control" type="password" id="fPswd" name="password" autocomplete="off" required=""></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label>Confirm Password</label><input class="form-control" type="password" id="fConformPswd" name="confirmpass" autocomplete="off" required=""></div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label>Phone</label><input class="form-control" type="tel" id="fPhone"  required=""  autocomplete="off"></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label>Email</label><input class="form-control" type="email" id="fEmail"  required=""  autocomplete="off"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label>Address</label><input class="form-control" type="text" id="fAddress"  required=""  autocomplete="off"></div>
+                                <hr>
+                                <div class="form-row">
+                                    <div class="col-md-12 content-right">
+                                        <button class="btn btn-success form-btn" type= "submit" id ="btnSaveSchool">SAVE</button>
+                                        
+                                        <button class="btn btn-danger form-btn" type="reset">RESET</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+</body>
+
+</html>

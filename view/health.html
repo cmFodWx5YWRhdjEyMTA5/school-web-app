@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+
+<body id="page-top">
+   
+        <div class="container-fluid" id="optionView" ng-include="">
+                <div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card" style="padding-top: 15px;padding-right: 10px;padding-bottom: 15px;padding-left: 10px;">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Normal</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="countNormal">0</span></div>
+                                    </div>
+                                    <div class="col-auto"><img src="assets/img/checked.png"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="padding-top: 15px;padding-right: 10px;padding-bottom: 15px;padding-left: 10px;">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span style="color: rgb(255,138,0);">Fever</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="countFever">0</span></div>
+                                    </div>
+                                    <div class="col-auto"><img src="assets/img/thermometer.png"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="padding-top: 15px;padding-right: 10px;padding-bottom: 15px;padding-left: 10px;">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span style="color: rgb(255,61,0);">HYPERTHERMIA</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="countHyperthermia">0</span></div>
+                                    </div>
+                                    <div class="col-auto"><img src="assets/img/temperature.png"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="padding-top: 15px;padding-right: 10px;padding-bottom: 15px;padding-left: 10px;">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span style="color: rgb(28,190,200);">Hypothermia</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span id="countHypothermia">0</span></div>
+                                    </div>
+                                    <div class="col-auto"><img src="assets/img/cold.png"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding-top: 30px;">
+                    <h3 class="text-dark mb-0">Temperature</h3>
+                </div>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div id="selectedClass" class="col">
+                                <h4>All Students</h4>
+                            </div>
+                           
+                            <div class="col-auto">
+                               
+                                <div id="btnSelectClass" class="dropdown d-lg-flex justify-content-lg-end"><button class="btn btn-light dropdown-toggle text-right" data-toggle="dropdown" aria-expanded="false" type="button">Select Class</button>
+                                    <div id= "menuClassList" class="dropdown-menu text-left" role="menu">
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto"><input id="mDatePicker" ></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table dataTable my-0" id="healthTable">
+                                <thead>
+                                    <tr>
+                                        <th>Photo</th>
+                                        <th>Student Name</th>
+                                        <th>Class</th>
+                                        <th>Temperature</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="heathRecords">
+                                    
+                                </tbody>
+                                <tfoot>
+                                    
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+   
+
+</body>
+
+</html>

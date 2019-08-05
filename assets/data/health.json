@@ -1,0 +1,47 @@
+{
+
+  "normal":110,
+  "fever":12,
+  "hyperthermia":1,
+  "hepothermia":1,
+  "temerature":[
+  {
+    "id":1,
+    "first_name":"Sam",
+    "last_name":"Khan",
+    "class_name":"Nursery",
+    "class_id":1,
+    "account_id":1,
+    "photo":"student.png",
+    "tempertaure":37,
+    "created_at":"2019/07/24 10:00:00",
+    "status":1
+  },
+  {
+    "id":2,
+    "first_name":"Sam",
+    "last_name":"Khan",
+    "class_name":"Nursery",
+    "class_id":1,
+    "account_id":1,
+    "photo":"student.png",
+    "tempertaure":37,
+    "created_at":"2019/07/24 10:00:00",
+    "status":1
+  },
+  {
+    "id":3,
+    "first_name":"Sam",
+    "last_name":"Khan",
+    "class_name":"Nursery",
+    "class_id":1,
+    "account_id":1,
+    "photo":"student.png",
+    "tempertaure":37,
+    "created_at":"2019/07/24 10:00:00",
+    "status":1
+  }
+
+ ]
+ 
+}

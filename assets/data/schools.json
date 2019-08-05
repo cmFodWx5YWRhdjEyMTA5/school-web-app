@@ -1,0 +1,35 @@
+[
+  {
+    "id":1,
+    "username":"iitm",
+    "name":"IIT Mumbai",
+    "address":"pawoi",
+    "password":"123",
+    "phone":"8999315789",
+    "email":"iitm@gmail.com",
+    "logo":"imgiit.png",
+    "status":1
+  },
+  {
+    "id":2,
+    "username":"hitech",
+    "name":"Hitech Institute of technolog",
+    "address":"Aurangabad",
+    "password":"123",
+    "phone":"982211009",
+    "email":"hit@gmail.com",
+    "logo":"imgiit.png",
+    "status":1
+  },
+  {
+    "id":3,
+    "username":"jnec",
+    "name":"JNEC",
+    "address":"Aurangabad",
+    "password":"123",
+    "phone":"8686813716",
+    "email":"iitm@gmail.com",
+    "logo":"imgiit.png",
+    "status":1
+  }
+]

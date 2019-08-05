@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "name":"Nursery",
+    "teacher_name":"Sam",
+    "account_id":123,
+    "created_at":"2019/07/24 10:00:00",
+    "updated_at":"2019/07/24 10:00:00",
+    "no_of_students":100,
+    "status":1
+  },
+  {
+    "id":2,
+    "name":"Jr KG",
+    "teacher_name":"Sam",
+    "account_id":123,
+    "created_at":"2019/07/24 10:00:00",
+    "updated_at":"2019/07/24 10:00:00",
+    "no_of_students":100,
+    "status":1
+  },
+  {
+    "id":3,
+    "name":"Sr KG",
+    "teacher_name":"Sam",
+    "account_id":123,
+    "created_at":"2019/07/24 10:00:00",
+    "updated_at":"2019/07/24 10:00:00",
+    "no_of_students":100,
+    "status":1
+  }
+]
