@@ -43,15 +43,15 @@ function initRobot(){
 }
 
 function getRobotList(callback) {   
-  let xobj = new XMLHttpRequest();
-      xobj.overrideMimeType("application/json");
-  xobj.open('GET', "assets/data/robots.json", true); 
-  xobj.onreadystatechange = function () {
+   let xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', "http://localhost:8080/robots", true);
+        xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
           callback(xobj.responseText);
         }
-  };
-  xobj.send(null);  
+    };
+    xobj.send(null);
 }
 
 function loadRoboList() {

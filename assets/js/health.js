@@ -18,14 +18,14 @@ function initHealth(){
 
 function loadJSON(callback) {   
   let xobj = new XMLHttpRequest();
-      xobj.overrideMimeType("application/json");
-  xobj.open('GET', "assets/data/health.json", true); 
-  xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-          callback(xobj.responseText);
-        }
-  };
-  xobj.send(null);  
+          xobj.overrideMimeType("application/json");
+          xobj.open('GET', "http://localhost:8080/healthrecord", true);
+          xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+          }
+      };
+      xobj.send(null);
 }
 
 function loadHealthRecords() {
@@ -40,7 +40,7 @@ function showList(listHealth){
   let x = "";
 
   console.log("count > "+listHealth.length);
-  let temerature = listHealth.temerature;
+  let temerature = listHealth.temperature;
   for(i in temerature){
     let health = temerature[i];
     
@@ -48,7 +48,7 @@ function showList(listHealth){
             "<td><img class='rounded-circle' src='assets/img/girl.png' style='width: 64px;'></td>"+
             "<td>"+health.first_name+" "+health.last_name+"</td>"+
             "<td>"+health.class_name+"</td>"+
-            "<td>"+health.tempertaure+"</td>"+
+            "<td>"+health.temperature+"</td>"+
             "<td>"+health.created_at+"</td>"+
           "</tr>"
 

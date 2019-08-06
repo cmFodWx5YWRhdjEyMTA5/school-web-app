@@ -102,8 +102,8 @@ function saveClass() {
         }
 
         $.ajax({
-           url: "http://localhost:8080/students",
-           type: "POST",
+           url: "http://localhost:8080/classrooms",
+           type: "PUT",
            contentType: "application/json",
            data: JSON.stringify(mClass),
            success: function(response) {

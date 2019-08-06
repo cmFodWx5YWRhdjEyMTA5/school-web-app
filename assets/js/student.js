@@ -154,8 +154,8 @@ function showStudentList(listStudent){
 
     x+=  "<tr id= "+stId+" >"+
           "<td><img class='rounded-circle' src='assets/img/girl.png' style='width: 64px;'></td>"+
-          "<td>"+student.first_name+" "+student.last_name+"</td>"+
-          "<td>"+student.class_name+"</td>"+
+          "<td>"+student.firstName+" "+student.lastName+"</td>"+
+          "<td>"+student.studentClass+"</td>"+
           "<td class='text-center'><button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editStudentInfo("+i+")'>Edit</button></td>"+
           "<td></td>"+
         "</tr>";
@@ -182,9 +182,9 @@ function saveStudent() {
       if(editStudent){
         var student = {
           "id":studnetId,
-          "first_name":inFirstName.value,
-          "last_name":inLastName.value,
-          "class_name":selectedClassName,
+          "firstName":inFirstName.value,
+          "lastName":inLastName.value,
+          "studentClass":selectedClassName,
           "class_id":selectedClassId,
           "account_id":inRollNumber.value,
           "photo":"student.png",
@@ -197,7 +197,7 @@ function saveStudent() {
         
         x =  "<tr id= st_tr_"+selectionStudent+" >"+
                 "<td><img class='rounded-circle' src='assets/img/girl.png' style='width: 64px;'></td>"+
-                "<td>"+student.first_name+" "+student.last_name+"</td>"+
+                "<td>"+student.firstName+" "+student.last_name+"</td>"+
                 "<td>"+student.class_name+"</td>"+
                 "<td class='text-center'><button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editStudentInfo("+selectionStudent+")'>Edit</button></td>"+
                 "<td></td>"+
