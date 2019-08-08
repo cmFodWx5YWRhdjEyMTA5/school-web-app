@@ -136,10 +136,11 @@ function saveClass() {
         }
 
         console.log("before add > "+listClass.length);
+
         listClass[listClass.length] = mClass;
         console.log("after add > "+listClass.length);
         var index = listClass.length-1;
- 
+
         var x = "<tr id= cl_tr_"+index+" >"+
         "<td>"+mClass.name+"</td>"+
         "<td>"+mClass.teacher_name+"</td>"+

@@ -193,11 +193,17 @@ function saveStudent() {
           "status":1
         }
 
+        $.ajax({
+          url: "http://localhost:8080/students",
+                   type: "PUT",
+                   contentType: "application/json",
+                   data: JSON.stringify(mClass),
+                   success: function(response){
         listStudent[selectionStudent] = student;
         
         x =  "<tr id= st_tr_"+selectionStudent+" >"+
                 "<td><img class='rounded-circle' src='assets/img/girl.png' style='width: 64px;'></td>"+
-                "<td>"+student.firstName+" "+student.last_name+"</td>"+
+                "<td>"+student.firstName+" "+student.lastName+"</td>"+
                 "<td>"+student.class_name+"</td>"+
                 "<td class='text-center'><button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editStudentInfo("+selectionStudent+")'>Edit</button></td>"+
                 "<td></td>"+
@@ -206,14 +212,20 @@ function saveStudent() {
           document.getElementById("st_tr_"+selectionStudent).innerHTML = x;
 
           console.log(x);
+           },error: function(response) {
+                           console.log("===> edit student error dipslay error messaage " + JSON.stringify(response));
+                        }
+                  });
 
       }else{
+
+
         var student = {
           "id":listStudent.length,
-          "first_name":inFirstName.value,
-          "last_name":inLastName.value,
-          "class_name":"Nursery",
-          "account_id":inRollNumber.value,
+          "firstName":inFirstName.value,
+          "lastName":inLastName.value,
+          "studentClass":"Nursery",
+          "accountId":inRollNumber.value,
           "photo":"student.png",
           "created_at":"2019/07/24 10:00:00",
           "updated_at":"2019/07/24 10:00:00",
