@@ -73,7 +73,7 @@ function showClassList(listClass){
     x+= "<tr id= "+clId+" >"+
       "<td>"+mClass.name+"</td>"+
       "<td>"+mClass.teacherName+"</td>"+
-      "<td>"+mClass.no_of_students+"</td>"+
+      "<td>"+mClass.studentCount+"</td>"+
       "<td class='text-center'>"+
         "<button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editClassDetails("+i+")'>Edit</button>"+
       "</td>"+
@@ -97,7 +97,7 @@ function saveClass() {
           "account_id": 123,
           "created_at":"2019/07/24 10:00:00",
           "updated_at":"2019/07/24 10:00:00",
-          "no_of_students":100,
+          "studentCount":100,
           "status":1
         }
 
