@@ -86,9 +86,12 @@
                 VALUES(null,'$uId','$classId','$firstName', '$lastName','$gender', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'1')";
 
         $result = mysql_query($q);
+        $autoId = mysql_query("SELECT MAX(student_id) FROM class");
+        $row = mysql_fetch_row($autoId);
+        $sId = $row[0];
 
         if ($result) {
-            savePhoto(false);
+            savePhoto(false,$sId);
         } else {
 
             $response["success"] = 0;
@@ -99,19 +102,69 @@
         }
     }
 
-    function savePhoto($isUpdate,$uId){
+    function savePhoto($isUpdate,$sId){
         
         $name=time();
-    
         $response["success"] = 1;
 
-        if($isUpdate){
-            $response["message"] = "student updated successfully. ".$name;
-        }else{
-            $response["message"] = "student registered successfully.".$name;
-        }
+        $fileName 	= 	$_FILES['photo']['name'];
+		$fileSize 	=	$_FILES['photo']['size'];
+		$fileTmp 	=	$_FILES['photo']['tmp_name'];
+		$fileType	=	$_FILES['photo']['type'];
+		
+		$value 		= 	explode(".", $fileName);
+		$fileExt	=	strtolower(array_pop($value)); 
+			  
+		$expensions		=	array("jpeg","jpg","png");
+			 
+		$errors		= 	array();
+		if(in_array($fileExt,$expensions)=== false){
+			$fileResult	=	"extension not allowed, please choose a JPEG or PNG file.";
+            $errors[]	=	"extension not allowed, please choose a JPEG or PNG file.";
+            deleteStudent($sId);
+		}
+			  
+		if($fileSize > 4097152){
+			$fileResult	=	'File size must be excately 2 MB';
+            $errors[]	=	'File size must be excately 2 MB';
+            deleteStudent($sId);
+		}
 
-        echo json_encode($response);
+        if(empty($errors)===true){
+            $path="";
+            
+            $path = ".data/images/students/".$sId.".".$fileExt;
+			
+			if (file_exists($path)) {
+				unlink($path);
+			}
+			
+			move_uploaded_file($fileTmp,$path);
+				
+			$res["status"] 		= "success";
+			$res["image"] 	= "success";
+			$res["id"] = $uId;
+			$res["message"] = "Account Created Successfully!";
+	
+				
+		}else{
+			$res["status"]	= "success";
+			$res["image"] 	= "error";
+			$res["message"] = $errors;
+			
+		}
+		
+		print json_encode($res);
+
+
+
+        // if($isUpdate){
+        //     $response["message"] = "student updated successfully. .$sId .$name ";
+        // }else{
+        //     $response["message"] = "student registered successfully.".$name;
+        // }
+
+        // echo json_encode($response);
 
         exit(0);
     }
@@ -140,7 +193,7 @@
                     
             if ($result) {
                 if(isset($_FILES['photo'])){
-                    savePhoto(true,$uId);
+                    savePhoto(true,$studentId);
                 }else{
                     $response["success"] = 1;
                     $response["message"] = "student updated successfully.";
@@ -190,7 +243,15 @@
 
     function listStudents($uId){
 
-        $result = mysql_query("SELECT * FROM student  WHERE account_id = '$uId' AND status = '1'");
+        if(isset($_REQUEST["class_id"]) ){
+            $cId = $_REQUEST["class_id"];
+            $q = "SELECT * FROM student  WHERE account_id = '$uId' AND class_id = '$cId' AND status = '1'";
+            
+        }else{
+            $q = "SELECT * FROM student  WHERE account_id = '$uId' AND status = '1'";
+        }
+
+        $result = mysql_query($q);
 
         if (!empty($result)) {
             
@@ -220,15 +281,15 @@
 
             } else {
                 
-                $response["success"] = 0;
-                $response["message"] = "No data found";
+                $response["success"] = 1;
+                $response["message"] = "No data found ";
 
                 echo json_encode($response);
             }
         } else {
             
             $response["success"] = 0;
-            $response["message"] = "No data found";
+            $response["message"] = "Invalid Request";
 
             echo json_encode($response);
         }

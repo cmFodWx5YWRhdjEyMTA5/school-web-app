@@ -138,7 +138,7 @@ function listAccounts(){
 
         } else {
             // no product found
-            $response["success"] = 0;
+            $response["success"] = 2;
             $response["message"] = "No user found";
 
             // echo no users JSON
@@ -147,7 +147,7 @@ function listAccounts(){
     } else {
         // no product found
         $response["success"] = 0;
-        $response["message"] = "No user found";
+        $response["message"] = "Invalid Request";
 
         // echo no users JSON
         echo json_encode($response);

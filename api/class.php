@@ -76,11 +76,9 @@
         $result = mysql_query($q);
 
         if ($result) {
-     
-            $name=time();
 
             $response["success"] = 1;
-            $response["message"] = "class successfully created. $name";
+            $response["message"] = "class successfully created.";
 
             echo json_encode($response);
         } else {    
@@ -163,7 +161,7 @@
 
             } else {
                 
-                $response["success"] = 0;
+                $response["success"] = 2;
                 $response["message"] = "No data found";
 
                 echo json_encode($response);
@@ -171,7 +169,7 @@
         } else {
             
             $response["success"] = 0;
-            $response["message"] = "No data found";
+            $response["message"] = "Invalid Resqest";
 
             echo json_encode($response);
         }

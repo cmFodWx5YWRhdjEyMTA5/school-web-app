@@ -38,9 +38,9 @@
 		// check for empty result
 		if (mysql_num_rows($result) > 0) {
 
-			$result = mysql_fetch_array($result);
+			$result = mysql_fetch_assoc($result);
 
-			$data = array();
+			$data = null;
 			$data["id"] = $result["id"];
 			$data["name"] = $result["name"];
 			$data["role"] = $result["role"];
@@ -53,9 +53,7 @@
 			$response["success"] = 1;
 
 			// user node
-			$response["data"] = array();
-
-			array_push($response["data"], $data);
+			$response["data"] = $data;
 
 			// echoing JSON response
 			echo json_encode($response);

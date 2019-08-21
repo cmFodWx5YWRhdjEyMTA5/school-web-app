@@ -131,7 +131,7 @@
 
             } else {
                 
-                $response["success"] = 0;
+                $response["success"] = 2;
                 $response["message"] = "No data found";
 
                 echo json_encode($response);
@@ -139,7 +139,7 @@
         } else {
             
             $response["success"] = 0;
-            $response["message"] = "No data found";
+            $response["message"] = "Invalid Request";
 
             echo json_encode($response);
         }
