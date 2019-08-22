@@ -357,6 +357,7 @@ function listAccounts(){
                 $account = array();
                
                 $account["id"] = $row["id"];
+                $account["logo"] = $row["logo"];
                 $account["role"] = $row["role"];
                 $account["username"] = $row["username"];
                 $account["password"] = $row["password"];

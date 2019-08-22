@@ -284,6 +284,7 @@
                     $account = array();
                 
                     $account["student_id"] = $row["student_id"];
+                    $account["photo"] = $row["photo"];
                     $account["first_name"] = $row["first_name"];
                     $account["last_name"] = $row["last_name"];
                     $account["gender"] = $row["gender"];
