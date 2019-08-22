@@ -3,6 +3,7 @@
     $response = array();
 
     require_once __DIR__ . '/db_connect.php';
+    require_once __DIR__ . '/validator.php';
 
     $db = new DB_CONNECT();
 
@@ -64,39 +65,48 @@
 
         $data = json_decode($_REQUEST["data"],true);
 
-        $srNo = $data["sr_no"];
+        if($data["sr_no"]!=null &&  $data["type"]!=null){
+            
+            $srNo = $data["sr_no"];
 
-        $result = mysql_query("SELECT id FROM robot WHERE serial_number = '$srNo' ");
-
-        if (!empty($result) && mysql_num_rows($result) > 0){
+            $result = mysql_query("SELECT id FROM robot WHERE serial_number = '$srNo' ");
     
-            $response["success"] = 0;
-            $response["message"] = "robot already registered";
-    
-            echo json_encode($response);
-    
-            exit(0);
-        }
-
+            if (!empty($result) && mysql_num_rows($result) > 0){
         
-        $type = $data["type"];
-     
-		$q = "INSERT INTO robot(id,account_id,serial_number,type,create_date,update_date,status) VALUES(null,'$uId','$srNo', '$type', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'1')";
-        $result = mysql_query($q);
-
-        if ($result) {
-    
-            $response["success"] = 1;
-            $response["message"] = "robot successfully created.";
-
-            echo json_encode($response);
-        } else {
+                $response["success"] = 0;
+                $response["message"] = "robot already registered";
         
+                echo json_encode($response);
+        
+                exit(0);
+            }
+    
+            
+            $type = $data["type"];
+         
+            $q = "INSERT INTO robot(id,account_id,serial_number,type,create_date,update_date,status) VALUES(null,'$uId','$srNo', '$type', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'1')";
+            $result = mysql_query($q);
+    
+            if ($result) {
+        
+                $response["success"] = 1;
+                $response["message"] = "robot successfully created.";
+    
+                echo json_encode($response);
+            } else {
+            
+                $response["success"] = 0;
+                $response["message"] = "Oops! An error occurred.";
+    
+                echo json_encode($response);
+            }
+        }else{
             $response["success"] = 0;
-            $response["message"] = "Oops! An error occurred.";
-
+            $response["message"] = "Invalid Data";
+    
             echo json_encode($response);
         }
+       
     }
 
   
@@ -150,7 +160,7 @@
 
         $robotId = $_REQUEST["robot_id"];
         
-        $result = mysql_query("DELETE  FROM robot WHERE id = '$robotId' ");
+        $result = mysql_query("DELETE  FROM robot WHERE id = '$robotId'  AND `robot`.`account_id` = $uId ");
 
         if ($result) {
             $response["success"] = 1;

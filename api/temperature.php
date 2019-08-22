@@ -3,6 +3,7 @@
     $response = array();
 
     require_once __DIR__ . '/db_connect.php';
+    require_once __DIR__ . '/validator.php';
 
     $db = new DB_CONNECT();
 
@@ -65,32 +66,41 @@
 
         $data = json_decode($_REQUEST["data"],true);
 
+        if($data["student_id"]!=null && $data["class_id"]!=null && $data["temperature"]!=null){
 
-        $studentId = $data["student_id"];
-        $classId = $data["class_id"];
-        $temperature = $data["temperature"];
-       
-      
-
-		$q = "INSERT INTO temperature(id,account_id,class_id,student_id,date) 
-                VALUES(null,'$uId','$classId','$studentId', CURRENT_TIMESTAMP)";
-
-        $result = mysql_query($q);
-
-        if ($result) {
-            $response["success"] = 1;
-            $response["message"] = "record added successfully";
-            echo json_encode($response);
-        } else {
-
-            $response["success"] = 0;
-            $response["message"] = "Oops! An error occurred.\n";
-
-            echo json_encode($response);
+            $studentId = $data["student_id"];
+            $classId = $data["class_id"];
+            $temperature = $data["temperature"];
            
+          
+    
+            $q = "INSERT INTO temperature(id,account_id,class_id,student_id,date) 
+                    VALUES(null,'$uId','$classId','$studentId', CURRENT_TIMESTAMP)";
+    
+            $result = mysql_query($q);
+    
+            if ($result) {
+                $response["success"] = 1;
+                $response["message"] = "record added successfully";
+                echo json_encode($response);
+            } else {
+    
+                $response["success"] = 0;
+                $response["message"] = "Oops! An error occurred.\n";
+    
+                echo json_encode($response);
+               
+            }
+
+        }else{
+            $response["success"] = 0;
+            $response["message"] = "Invalid Data";
+    
+            echo json_encode($response);
         }
 
         exit(0);
+       
     }
 
 
