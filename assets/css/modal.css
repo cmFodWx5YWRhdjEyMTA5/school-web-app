@@ -10,6 +10,14 @@ input[type=text], input[type=password] {
 }
 
 /*  Set a style for all buttons  */
+#hideElement
+{
+  display:none
+}
+
+#showElement{
+  display:block
+}
 
 button {
   background-color: #4CAF50;

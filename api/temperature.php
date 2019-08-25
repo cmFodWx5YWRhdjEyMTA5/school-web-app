@@ -74,8 +74,8 @@
            
           
     
-            $q = "INSERT INTO temperature(id,account_id,class_id,student_id,date) 
-                    VALUES(null,'$uId','$classId','$studentId', CURRENT_TIMESTAMP)";
+            $q = "INSERT INTO temperature(id,account_id,class_id,student_id,temperature,date) 
+                    VALUES(null,'$uId','$classId','$studentId','$temperature', CURRENT_TIMESTAMP)";
     
             $result = mysql_query($q);
     
@@ -133,20 +133,50 @@
         // FROM Orders
         // INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;";
         
-        if(isset($_REQUEST["class_id"]) ){
+        if(isset($_REQUEST["class_id"]) && isset($_REQUEST["date"])){
             $cId = $_REQUEST["class_id"];
-            $q = "SELECT temperature.id,temperature.temperature,temperature.student_id,temperature.class_id,
-            student.first_name,student.last_name,student.photo,student.gender,temperature.date
+            $date = $_REQUEST["date"];
+            $q = "SELECT temperature.id,temperature.temperature,temperature.student_id,
+            temperature.class_id, student.first_name,student.last_name,student.photo,
+            student.gender,class.class_name,temperature.date
             FROM temperature  
             INNER JOIN student on temperature.account_id = student.account_id
-            WHERE temperature.account_id = '$uId' AND temperature.class_id = '$cId' ";            
+            INNER JOIN class on temperature.class_id = class.class_id
+            WHERE temperature.account_id = '$uId' AND temperature.class_id = '$cId' AND 
+            temperature.date BETWEEN '$date' AND '$date 23:59:59'";            
+
+        }else if(isset($_REQUEST["class_id"]) ){
+            
+            $cId = $_REQUEST["class_id"];
+           
+            $q = "SELECT temperature.id,temperature.temperature,temperature.student_id,
+            temperature.class_id, student.first_name,student.last_name,student.photo,
+            student.gender,class.class_name,temperature.date
+            FROM temperature  
+            INNER JOIN student on temperature.account_id = student.account_id
+            INNER JOIN class on temperature.class_id = class.class_id
+            WHERE temperature.account_id = '$uId' AND temperature.class_id = '$cId' ";     
+
+        }else if(isset($_REQUEST["date"])){
+            $date = $_REQUEST["date"];
+            $q = "SELECT temperature.id,temperature.temperature,temperature.student_id,
+            temperature.class_id, student.first_name,student.last_name,student.photo,
+            student.gender,class.class_name,temperature.date
+            FROM temperature  
+            INNER JOIN student on temperature.account_id = student.account_id
+            INNER JOIN class on temperature.class_id = class.class_id
+            WHERE temperature.account_id = '$uId' AND
+            temperature.date BETWEEN '$date' AND '$date 23:59:59'";  
         }else{
             $q = "SELECT temperature.id,temperature.temperature,temperature.student_id,temperature.class_id,
-            student.first_name,student.last_name,student.photo,student.gender,temperature.date
+            student.first_name,student.last_name,student.photo,student.gender,class.class_name
+            ,temperature.date
             FROM temperature  
             INNER JOIN student on temperature.account_id = student.account_id
+            INNER JOIN class on temperature.class_id = class.class_id
             WHERE temperature.account_id = '$uId' ";
         }
+       
 
         $result = mysql_query($q);
 
@@ -170,6 +200,7 @@
                     $account["last_name"] = $row["last_name"];
                     $account["gender"] = $row["gender"];
                     $account["photo"] = $row["photo"];
+                    $account["class_name"] = $row["class_name"];
                     $account["temperature"] = $row["temperature"];
                     $account["date"] = $row["date"];
         

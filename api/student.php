@@ -262,10 +262,16 @@
 
         if(isset($_REQUEST["class_id"]) ){
             $cId = $_REQUEST["class_id"];
-            $q = "SELECT * FROM student  WHERE account_id = '$uId' AND class_id = '$cId' AND status = '1'";
+            $q = "SELECT student.student_id,student.first_name,student.last_name,student.gender,
+            student.photo,student.class_id,class.class_name FROM student  
+            INNER JOIN class on student.class_id = class.class_id
+            WHERE student.account_id = '$uId' AND student.class_id = '$cId' AND student.status = '1'";
             
         }else{
-            $q = "SELECT * FROM student  WHERE account_id = '$uId' AND status = '1'";
+            $q = "SELECT student.student_id,student.first_name,student.last_name,student.gender,
+            student.photo,student.class_id,class.class_name FROM student  
+            INNER JOIN class on student.class_id = class.class_id
+            WHERE student.account_id = '$uId'  AND student.status = '1'";
         }
 
         $result = mysql_query($q);
@@ -289,7 +295,8 @@
                     $account["last_name"] = $row["last_name"];
                     $account["gender"] = $row["gender"];
                     $account["class_id"] = $row["class_id"];
-                    $account["create_date"] = $row["create_date"];
+                    $account["class_name"] = $row["class_name"];
+                 
         
                     array_push($response["data"], $account);
                 }
@@ -298,7 +305,7 @@
 
             } else {
                 
-                $response["success"] = 1;
+                $response["success"] = 2;
                 $response["message"] = "No data found ";
 
                 echo json_encode($response);
@@ -306,6 +313,7 @@
         } else {
             
             $response["success"] = 0;
+           //$response["query"] = $q;
             $response["message"] = "Invalid Request";
 
             echo json_encode($response);
