@@ -77,7 +77,8 @@ function getStudentPhoto(input) {
     var reader = new FileReader();
     
     reader.onload = function(e) {
-      $('#imgStudent').attr('src', e.target.result);
+      $('#imgStudent').attr('src', e.target.result).width('50%').height('auto');
+      fixExifOrientation($('#imgStudent'));
     }
     
     photo = input.files[0];
@@ -215,6 +216,7 @@ function showStudentList(listStudent){
     x+=  "<tr id= "+stId+" >"+
           "<td><img  src='"+img+"' style='width: 64px;'></td>"+
           "<td>"+student.first_name+" "+student.last_name+"</td>"+
+          "<td>"+student.roll_no+"</td>"+
           "<td>"+student.class_name+"</td>"+
           "<td class='text-center'><button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editStudentInfo("+i+")'>Edit</button></td>"+
           "<td></td>"+
@@ -301,7 +303,6 @@ function queryStudent(student,update){
     method: 'POST',
     type: 'POST', 
     success: function(data){
-      alert(data);
       var res = JSON.parse(data);
       if(res.success=="1"){
         $('#imgStudent').attr('src', "assets/img/user-2.png");
@@ -380,7 +381,7 @@ function editStudentInfo(position){
 
   inFirstName.value = student.first_name;
   inLastName.value  = student.last_name;
-  inRollNumber.value= student.account_id;
+  inRollNumber.value= student.roll_no;
 
   editStudent = true;
   selectionStudent = position;

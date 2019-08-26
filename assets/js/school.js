@@ -205,7 +205,7 @@ function querySchool(school,update){
     method: 'POST',
     type: 'POST', 
     success: function(data){
-      alert(data);
+     
       var res = JSON.parse(data);
       if(res.success=="1"){
         $('#imgLogo').attr('src', "assets/img/school-circle.png");

@@ -86,9 +86,10 @@
             $lastName = $data["last_name"];
             $gender = $data["gender"];
             $classId = $data["class_id"];
+            $rNo = $data["roll_no"];
     
-            $q = "INSERT INTO student(student_id,account_id,class_id,first_name,last_name,gender,create_date,update_date,status) 
-                    VALUES(null,'$uId','$classId','$firstName', '$lastName','$gender', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'1')";
+            $q = "INSERT INTO student(student_id,account_id,class_id,roll_no,first_name,last_name,gender,create_date,update_date,status) 
+                    VALUES(null,'$uId','$classId','$rNo','$firstName', '$lastName','$gender', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'1')";
     
             $result = mysql_query($q);
             $autoId = mysql_query("SELECT MAX(student_id) FROM student");
@@ -197,9 +198,10 @@
                 $lastName = $data["last_name"];
                 $gender = $data["gender"];
                 $classId = $data["class_id"];
+                $rNo = $data["roll_no"];
           
                 $q = "UPDATE `student` SET `first_name` = '$firstName', `last_name` = '$lastName',
-                 `gender` = '$gender', `class_id` = '$classId',
+                 `gender` = '$gender', `class_id` = '$classId', `roll_no` = '$rNo',
                  `update_date` = CURRENT_TIMESTAMP WHERE `student`.`student_id` = $studentId AND `student`.`account_id` = $uId";
                 
                 $result = mysql_query($q);
@@ -262,13 +264,13 @@
 
         if(isset($_REQUEST["class_id"]) ){
             $cId = $_REQUEST["class_id"];
-            $q = "SELECT student.student_id,student.first_name,student.last_name,student.gender,
+            $q = "SELECT student.student_id,student.roll_no,student.first_name,student.last_name,student.gender,
             student.photo,student.class_id,class.class_name FROM student  
             INNER JOIN class on student.class_id = class.class_id
             WHERE student.account_id = '$uId' AND student.class_id = '$cId' AND student.status = '1'";
             
         }else{
-            $q = "SELECT student.student_id,student.first_name,student.last_name,student.gender,
+            $q = "SELECT student.student_id,student.roll_no,student.first_name,student.last_name,student.gender,
             student.photo,student.class_id,class.class_name FROM student  
             INNER JOIN class on student.class_id = class.class_id
             WHERE student.account_id = '$uId'  AND student.status = '1'";
@@ -290,6 +292,7 @@
                     $account = array();
                 
                     $account["student_id"] = $row["student_id"];
+                    $account["roll_no"] = $row["roll_no"];
                     $account["photo"] = $row["photo"];
                     $account["first_name"] = $row["first_name"];
                     $account["last_name"] = $row["last_name"];

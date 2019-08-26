@@ -167,8 +167,15 @@
             
                 while ($row = mysql_fetch_array($result)) {
                     $account = array();
-                
+                    
+                    $cId = $row["class_id"];
+                    
+                    $q = "SELECT COUNT(student_id) AS students FROM student WHERE class_id = 1";
+                    $result = mysql_query($q);
+                    $count = mysql_fetch_assoc($result);
+
                     $account["class_id"] = $row["class_id"];
+                    $account["students"] = $count["students"];
                     $account["class_name"] = $row["class_name"];
                     $account["teacher_name"] = $row["teacher_name"];
                     $account["create_date"] = $row["create_date"];

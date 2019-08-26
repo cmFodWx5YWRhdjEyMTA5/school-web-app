@@ -65,9 +65,9 @@ function showClassList(listClass){
     console.log("class > "+clId+"");
     
     x+= "<tr id= "+clId+" >"+
-      "<td>"+mClass.class_id+"</td>"+
-      "<td>"+mClass.teacher_name+"</td>"+
       "<td>"+mClass.class_name+"</td>"+
+      "<td>"+mClass.teacher_name+"</td>"+
+      "<td>"+mClass.students+"</td>"+
       "<td class='text-center'>"+
         "<button class='btn btn-primary' style='background-color: rgb(45,200,32);' onclick='editClassDetails("+i+")'>Edit</button>"+
       "</td>"+
