@@ -119,8 +119,21 @@ function showList(listHealth){
   for(i in listHealth){
     let health = listHealth[i];
     
+    var img;
+    if(health.photo!=null){
+      img = "data/images/students/"+health.photo;
+    }else{
+      if(health.gender == "Male"){
+        img = "assets/img/boy.png";
+      }else if(health.gender == "Female"){
+        img = "assets/img/girl.png";
+      }else{
+        img = "assets/img/user-2.png";
+      }
+    }
+
     x+= " <tr>"+
-            "<td><img class='rounded-circle' src='assets/img/girl.png' style='width: 64px;'></td>"+
+            "<td><img  src='"+img+"' style='width: 64px;'></td>"+
             "<td>"+health.first_name+" "+health.last_name+"</td>"+
             "<td>"+health.class_name+"</td>"+
             "<td>"+health.temperature+"</td>"+
